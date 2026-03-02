@@ -5,7 +5,7 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.FindIterable;
 import org.bson.Document;
 
-public class MongoCRUD
+public class MongoCRUD {
 
     public static void main(String[] args) {
         // Create a MongoClient using the factory method
