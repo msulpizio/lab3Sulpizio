@@ -14,17 +14,17 @@ public class CustomerMySQLCRUD {
     }
 
     public static void insertCustomer(Connection connection, Customer c) throws SQLException {
-        String sql = "INSERT INTO Customers (id, firstName, lastName, age, email, phone, address, membership) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Customers (firstName, lastName, age, email, phone, address, membership) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setInt(1, c.getId());
-            ps.setString(2, c.getFirstName());
-            ps.setString(3, c.getLastName());
-            ps.setInt(4, c.getAge());
-            ps.setString(5, c.getEmail());
-            ps.setString(6, c.getPhone());
-            ps.setString(7, c.getAddress());
-            ps.setString(8, c.getMembership());
+            ps.setString(1, c.getFirstName());
+            ps.setString(2, c.getLastName());
+            ps.setInt(3, c.getAge());
+            ps.setString(4, c.getEmail());
+            ps.setString(5, c.getPhone());
+            ps.setString(6, c.getAddress());
+            ps.setString(7, c.getMembership());
             ps.executeUpdate();
         }
     }

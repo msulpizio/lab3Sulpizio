@@ -8,34 +8,40 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Customer c1 = new Customer(1, "Bob", "Johnson", 37, "bobjohnson37@gmail.com", "2156079823", "10967 Woodland Road", "Gold");
-        Customer c2 = new Customer(2, "Alice", "Smith", 28, "alice.smith@gmail.com", "6095551212", "22 Main Street", "Silver");
-        Customer c3 = new Customer(3, "Matt", "Sulpizio", 21, "matt.sulpizio@gmail.com", "8565557788", "1 College Ave", "Platinum");
+        Customer c1 = new Customer(1, "Bob", "Johnson", 37, "bjohnson37@gmail.com", "2156079823", "10967 Woodland Road", "Gold");
+        Customer c2 = new Customer(2, "Tyler", "Robinson", 49, "trobinson49@gmail.com", "3420978475", "64918 Rydal Ave", "Silver");
+        Customer c3 = new Customer(3, "Kevin", "Braxton", 26, "kbraxton26@gmail.com", "4397162078", "34571 Stoneridge Street", "Platinum");
+        Customer c4 = new Customer(4, "Roger", "Smith", 53, "rsmith53@gmail.com", "3027863192", "86321 Philadelphia Ave", "Gold");
+        Customer c5 = new Customer(5, "Jeremy", "Thompson", 64, "bthompson64@gmail.com", "8732091365", "30296 Brickhouse Road", "Silver");
+        Customer c6 = new Customer(6, "Mike", "Jeferson", 42, "mjefferson42@gmail.com", "7609831287", "80934 River Street", "Platinum");
 
         // -------------------------
         // MySQL CRUD
         // -------------------------
         try (Connection conn = CustomerMySQLCRUD.getConnection()) {
 
-            System.out.println("=== MYSQL: INSERT 3 CUSTOMERS ===");
+            System.out.println("--- MYSQL: INSERT CUSTOMERS ---");
             CustomerMySQLCRUD.insertCustomer(conn, c1);
             CustomerMySQLCRUD.insertCustomer(conn, c2);
             CustomerMySQLCRUD.insertCustomer(conn, c3);
+            CustomerMySQLCRUD.insertCustomer(conn, c4);
+            CustomerMySQLCRUD.insertCustomer(conn, c5);
+            CustomerMySQLCRUD.insertCustomer(conn, c6);
 
-            System.out.println("=== MYSQL: READ ALL ===");
+            System.out.println("--- MYSQL: READ ALL ---");
             List<Customer> mysqlCustomers = CustomerMySQLCRUD.getAllCustomers(conn);
             mysqlCustomers.forEach(System.out::println);
 
-            System.out.println("=== MYSQL: UPDATE (id=1) FIRST NAME ===");
-            CustomerMySQLCRUD.updateCustomerFirstName(conn, 1, "UpdatedBob");
+            System.out.println("--- MYSQL: UPDATE (id=1) FIRST NAME ---");
+            CustomerMySQLCRUD.updateCustomerFirstName(conn, 1, "Brian");
 
-            System.out.println("=== MYSQL: READ ALL AGAIN ===");
+            System.out.println("--- MYSQL: READ ALL AGAIN ---");
             CustomerMySQLCRUD.getAllCustomers(conn).forEach(System.out::println);
 
-            System.out.println("=== MYSQL: DELETE (id=2) ===");
+            System.out.println("--- MYSQL: DELETE (id=2) ---");
             CustomerMySQLCRUD.deleteCustomer(conn, 2);
 
-            System.out.println("=== MYSQL: READ ALL AFTER DELETE ===");
+            System.out.println("--- MYSQL: READ ALL AFTER DELETE ===");
             CustomerMySQLCRUD.getAllCustomers(conn).forEach(System.out::println);
 
         } catch (Exception e) {
@@ -49,24 +55,28 @@ public class Main {
         try {
             MongoCollection<Document> collection = CustomerMongoCRUD.getCollection();
 
-            System.out.println("\n=== MONGO: INSERT 3 CUSTOMERS ===");
+            System.out.println("\n--- MONGO: INSERT CUSTOMERS ---");
             CustomerMongoCRUD.insertCustomer(collection, c1);
             CustomerMongoCRUD.insertCustomer(collection, c2);
             CustomerMongoCRUD.insertCustomer(collection, c3);
+            CustomerMongoCRUD.insertCustomer(collection, c4);
+            CustomerMongoCRUD.insertCustomer(collection, c5);
+            CustomerMongoCRUD.insertCustomer(collection, c6);
 
-            System.out.println("=== MONGO: READ ALL ===");
+
+            System.out.println("--- MONGO: READ ALL ---");
             CustomerMongoCRUD.getAllCustomers(collection).forEach(d -> System.out.println(d.toJson()));
 
-            System.out.println("=== MONGO: UPDATE (id=1) FIRST NAME ===");
-            CustomerMongoCRUD.updateCustomerFirstName(collection, 1, "UpdatedBob");
+            System.out.println("--- MONGO: UPDATE (id=1) FIRST NAME ---");
+            CustomerMongoCRUD.updateCustomerFirstName(collection, 1, "Brian");
 
-            System.out.println("=== MONGO: READ ALL AGAIN ===");
+            System.out.println("--- MONGO: READ ALL AGAIN ---");
             CustomerMongoCRUD.getAllCustomers(collection).forEach(d -> System.out.println(d.toJson()));
 
-            System.out.println("=== MONGO: DELETE (id=2) ===");
+            System.out.println("--- MONGO: DELETE (id=2) ---");
             CustomerMongoCRUD.deleteCustomer(collection, 2);
 
-            System.out.println("=== MONGO: READ ALL AFTER DELETE ===");
+            System.out.println("--- MONGO: READ ALL AFTER DELETE ---");
             CustomerMongoCRUD.getAllCustomers(collection).forEach(d -> System.out.println(d.toJson()));
 
         } catch (Exception e) {
