@@ -1,11 +1,33 @@
+
+/** Project: Lab 3
+ * Purpose Details: Customer CRUD
+ * Course: IST 242
+ * Author: Matthew Sulpizio
+ * Date Developed: 2/20/26
+ * Last Date Changed: 3/1/26
+ * Rev:
+
+ */
+
+
 import com.mongodb.client.MongoCollection;
 import org.bson.Document;
 
 import java.sql.Connection;
 import java.util.List;
 
+/**
+ * Program entry point for demonstrating Customer CRUD operations in
+ * both MySQL and MongoDB.
+ */
 public class Main {
 
+    /**
+     * Runs the program and demonstrates insert, read, update, and delete
+     * for customers in both MySQL and MongoDB.
+     *
+     * @param args Command-line arguments.
+     */
     public static void main(String[] args) {
 
         Customer c1 = new Customer(1, "Bob", "Johnson", 37, "bjohnson37@gmail.com", "2156079823", "10967 Woodland Road", "Gold");
@@ -15,9 +37,9 @@ public class Main {
         Customer c5 = new Customer(5, "Jeremy", "Thompson", 64, "bthompson64@gmail.com", "8732091365", "30296 Brickhouse Road", "Silver");
         Customer c6 = new Customer(6, "Mike", "Jeferson", 42, "mjefferson42@gmail.com", "7609831287", "80934 River Street", "Platinum");
 
-        // -------------------------
-        // MySQL CRUD
-        // -------------------------
+        /**
+         * MYSQL CRUD
+         */
         try (Connection conn = CustomerMySQLCRUD.getConnection()) {
 
             System.out.println("--- MYSQL: INSERT CUSTOMERS ---");
@@ -49,9 +71,9 @@ public class Main {
             e.printStackTrace();
         }
 
-        // -------------------------
-        // MongoDB CRUD
-        // -------------------------
+        /**
+         * MongoDB CRUD
+         */
         try {
             MongoCollection<Document> collection = CustomerMongoCRUD.getCollection();
 
