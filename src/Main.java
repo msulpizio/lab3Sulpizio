@@ -23,6 +23,12 @@ import java.util.List;
 public class Main {
 
     /**
+     * Prevents instantiation of the Main class.
+     */
+    private Main() {
+    }
+
+    /**
      * Runs the program and demonstrates insert, read, update, and delete
      * for customers in both MySQL and MongoDB.
      *

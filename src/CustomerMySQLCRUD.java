@@ -15,9 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Provides MySQL CRUD operations for Customer records.
+ * Provides CRUD operations for Customer data stored in MySQL.
  */
 public class CustomerMySQLCRUD {
+
+    /**
+     * Creates a CustomerMySQLCRUD object.
+     */
+    public CustomerMySQLCRUD() {
+    }
 
     /** Connection URL for the MySQL database. */
     private static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/Store";

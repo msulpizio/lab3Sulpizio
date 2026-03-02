@@ -22,9 +22,15 @@ import static com.mongodb.client.model.Filters.eq;
 import static com.mongodb.client.model.Updates.set;
 
 /**
- * Provides MongoDB CRUD operations for Customer information.
+ * Provides CRUD operations for Customer data stored in MongoDB.
  */
 public class CustomerMongoCRUD {
+
+    /**
+     * Creates a CustomerMongoCRUD object.
+     */
+    public CustomerMongoCRUD() {
+    }
 
     /** MongoDB connection string. */
     private static final String CONNECTION_STRING = "mongodb://localhost:27017";
